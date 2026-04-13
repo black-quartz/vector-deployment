@@ -30,5 +30,6 @@ sinks:
     data_stream:
       type: logs
       dataset: kubernetes
+      namespace: prod
     bulk:
       action: create

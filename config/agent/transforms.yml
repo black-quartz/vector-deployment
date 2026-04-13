@@ -35,5 +35,5 @@ transforms:
     source: |
       .namespace = .kubernetes.pod_namespace
       .pod = .kubernetes.pod_name
-      .container - .kubernetes.container_name
+      .container = .kubernetes.container_name
       .node = .kubernetes.pod_node_name
