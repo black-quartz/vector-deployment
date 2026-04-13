@@ -1,0 +1,39 @@
+#                                    __   __  __
+#                                    \ \ / / / /
+#                                     \ V / / /
+#                                      \_/  \/
+#
+#                                    V E C T O R
+#                                   Configuration
+#
+# ------------------------------------------------------------------------------
+# Website: https://vector.dev
+# Docs: https://vector.dev/docs
+# Chat: https://chat.vector.dev
+# ------------------------------------------------------------------------------
+
+# Relevant Transforms
+# ------------------------------------------------------------------------------
+# Filter - Filter events based on a set of conditions:
+# https://vector.dev/docs/reference/configuration/transforms/filter/
+#
+# Remap - Modify observability data as it passes through the topology using Vector Remap Language (VRL):
+# https://vector.dev/docs/reference/configuration/transforms/remap/
+#
+# Route - Split a stram of events into multiple sub-streams based on user-supplied conditions:
+# https://vector.dev/docs/reference/configuration/transforms/route/
+#
+# Throttle - Rate limit logs passing through a topology:
+# https://vector.dev/docs/reference/configuration/transforms/throttle/
+# ------------------------------------------------------------------------------
+
+transforms:
+  enrich_kubernetes:
+    type: remap
+    inputs:
+      - kubernetes_logs
+    source: |
+      .namespace = .kubernetes.pod_namespace
+      .pod = .kubernetes.pod_name
+      .container - .kubernetes.container_name
+      .node = .kubernetes.pod_node_name
