@@ -17,6 +17,7 @@ sinks:
   # -------------------------------------------------------------------------------
   elasticsearch:
     type: elasticsearch
+    api_version: "v8"
     inputs:
       - enrich_kubernetes
     endpoints:
