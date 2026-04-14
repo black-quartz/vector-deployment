@@ -32,6 +32,9 @@ spec:
     existingConfigMaps:
       - vector-agent-config
 
+    service:
+      enabled: false
+
     serviceAccount:
       create: true
       name: vector-agent
