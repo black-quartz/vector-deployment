@@ -20,7 +20,7 @@ sinks:
     inputs:
       - enrich_kubernetes
     endpoints:
-      - https://elasticsearch-es-http.elastic-stack.svc.prod-us-1.blackquartz.io:9200
+      - https://elasticsearch-es-http.elastic-stack.svc:9200
     tls:
       ca_file: /etc/ssl/elastic/ca.crt
     auth:
