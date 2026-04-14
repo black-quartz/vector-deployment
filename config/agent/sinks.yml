@@ -26,8 +26,8 @@ sinks:
       ca_file: /etc/ssl/elastic/ca.crt
     auth:
       strategy: basic
-      user: "${ELASTIC_USERNAME}"
-      password: "${ELASTIC_PASSWORD}"
+      user: "$${ELASTIC_USERNAME}"
+      password: "$${ELASTIC_PASSWORD}"
     data_stream:
       type: logs
       dataset: kubernetes
