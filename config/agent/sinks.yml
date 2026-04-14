@@ -32,3 +32,5 @@ sinks:
       type: logs
       dataset: kubernetes
       namespace: ${ENVIRONMENT}
+    bulk:
+      action: create
