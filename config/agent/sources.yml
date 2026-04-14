@@ -12,11 +12,17 @@
 # Chat: https://chat.vector.dev
 # ------------------------------------------------------------------------------
 
+# Relevant Sources 
+# ------------------------------------------------------------------------------
+# File: https://vector.dev/docs/reference/configuration/sources/file/
+# 
+# Kubernetes: https://vector.dev/docs/reference/configuration/sources/kubernetes_logs/
+# ------------------------------------------------------------------------------
+
 data_dir: /vector-data-dir
 
+# Relevant 
 sources:
-  # Reference: https://vector.dev/docs/reference/configuration/sources/kubernetes_logs/
-  # -----------------------------------------------------------------------------------
   kubernetes_logs:
     type: kubernetes_logs
     auto_partial_merge: true
