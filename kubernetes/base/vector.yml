@@ -32,6 +32,13 @@ spec:
     existingConfigMaps:
       - vector-agent-config
 
+    serviceAccount:
+      create: true
+      name: vector-agent
+
+    rbac:
+      create: false
+
     extraVolumes:
       - name: elastic-ca
         configMap:
