@@ -40,3 +40,4 @@ transforms:
       .pod = .kubernetes.pod_name
       .container = .kubernetes.container_name
       .node = .kubernetes.pod_node_name
+      .kubernetes.pod_labels = flatten(.kubernetes.pod_labels)
