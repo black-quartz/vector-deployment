@@ -29,9 +29,11 @@ sinks:
       strategy: basic
       user: "$${ELASTIC_USERNAME}"
       password: "$${ELASTIC_PASSWORD}"
+    mode: data_stream
     data_stream:
       type: logs
       dataset: kubernetes
       namespace: ${ENVIRONMENT}
     bulk:
       action: create
+

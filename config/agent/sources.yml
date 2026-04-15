@@ -21,7 +21,6 @@
 
 data_dir: /vector-data-dir
 
-# Relevant 
 sources:
   kubernetes_logs:
     type: kubernetes_logs
