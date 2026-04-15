@@ -40,4 +40,17 @@ transforms:
       .pod = .kubernetes.pod_name
       .container = .kubernetes.container_name
       .node = .kubernetes.pod_node_name
-      .kubernetes.pod_labels = flatten(.kubernetes.pod_labels)
+      
+      if exists(.kubernetes.pod_labels) {
+          # Use a new object to store sanitized labels
+          .labels = {}
+          
+          # Iterate through labels, replacing dots with underscores
+          for_each(object!(.kubernetes.pod_labels)) -> |key, value| {
+              new_key = replace(key, ".", "_")
+              .labels."{{ new_key }}" = value
+          }
+          
+          # Remove the original dotted labels
+          del(.kubernetes.pod_labels)
+      }
