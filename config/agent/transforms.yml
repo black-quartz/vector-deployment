@@ -46,12 +46,9 @@ transforms:
       - kubernetes_logs
     source: |
       .@source = "kubernetes"
-      .@dataset, err = "kubernetes-" + .kubernetes.container_name
+      .@dataset = "kubernetes-" + string!(.kubernetes.container_name)
       .@namespace = .kubernetes.pod_namespace
 
-      if err == null {
-        return null
-      }
 
   tag_kubernetes_audit_logs:
     type: remap
