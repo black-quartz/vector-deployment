@@ -13,7 +13,7 @@ tests:
               # Assert that the data stream for the logs follows 'logs-{dataset}-{namespace}'
               expected_destination = "logs-hubble.flow-platform"
               destination = "logs-" + string!(.@dataset) + "-" + string!(.@namespace)
-              
+
               assert_eq!(.@source, "hubble_flow")
               assert_eq!(.@dataset, "hubble.flow")
               assert_eq!(.@namespace, "platform")
@@ -61,27 +61,6 @@ tests:
 
               assert_eq!(.@source, "kubernetes_audit")
               assert_eq!(.@dataset, "kubernetes.audit")
-              assert_eq!(.@namespace, "platform")
-
-              assert_eq!(destination, expected_destination)
-
-  - name: test_tag_vault_audit_logs
-    inputs:
-      - insert_at: tag_vault_audit_logs
-        type: log
-        log_fields:
-          message: "{}"
-    outputs:
-      - extract_from: tag_vault_audit_logs
-        conditions:
-          - type: vrl
-            source: |
-              # Assert that the data stream for the logs follows 'logs-{dataset}-{namespace}'
-              expected_destination = "logs-vault.audit-platform"
-              destination = "logs-" + string!(.@dataset) + "-" + string!(.@namespace)
-              
-              assert_eq!(.@source, "vault_audit")
-              assert_eq!(.@dataset, "vault.audit")
               assert_eq!(.@namespace, "platform")
 
               assert_eq!(destination, expected_destination)
@@ -260,17 +239,3 @@ tests:
 
               assert!(exists(.requestReceivedTimestamp) == false)
               assert!(exists(.stageTimestamp) == false)
-
-  - name: test_remap_vault_audit_logs
-    inputs:
-      - insert_at: remap_vault_audit_logs
-        type: log
-        log_fields:
-          request:
-            namespace: test
-    outputs:
-      - extract_from: remap_vault_audit_logs
-        conditions:
-          - type: vrl
-            source: |
-              assert!(exists(.request.namespace) == false)
