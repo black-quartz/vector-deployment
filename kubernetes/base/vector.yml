@@ -118,7 +118,7 @@ spec:
 
     serviceAccount:
       create: true
-      name: vector-agent
+      name: vector-aggregator
 
     rbac:
       create: false

@@ -35,3 +35,10 @@ sinks:
       namespace: "{{ .@namespace }}"
     bulk:
       action: create
+
+  debug:
+    type: console
+    inputs:
+      - unifi_logs
+    encoding:
+      codec: text
