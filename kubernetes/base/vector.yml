@@ -108,7 +108,7 @@ spec:
 
     service:
       enabled: true
-      type: "LoadBalancer"
+      type: "ClusterIP"
 
       ports:
         - name: syslog-udp
