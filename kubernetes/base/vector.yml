@@ -49,7 +49,7 @@ spec:
 
       - name: vector-agent-tls
         secret:
-          name: vector-agent-tls-secret
+          secretName: vector-agent-tls-secret
 
       - name: hubble-logs
         hostPath:
@@ -130,7 +130,7 @@ spec:
 
       - name: vector-aggregator-tls
         secret:
-          name: vector-aggregator-tls-secret
+          secretName: vector-aggregator-tls-secret
 
     extraVolumeMounts:
       - name: elastic-ca
