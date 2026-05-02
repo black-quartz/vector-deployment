@@ -92,7 +92,7 @@ spec:
   releaseName: vector-aggregator
   # https://github.com/vectordotdev/helm-charts/blob/develop/charts/vector/values.yaml
   values:
-    role: "Aggregator"
+    role: "Stateless-Aggregator"
     dataDir: /vector-data-dir
     existingConfigMaps:
       - vector-aggregator-config
