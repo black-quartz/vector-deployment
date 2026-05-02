@@ -18,7 +18,7 @@ sinks:
     api_version: "v8"
     inputs:
       - remap_envoy_access_logs
-      - remap_hubble_flow_logs
+      # - remap_hubble_flow_logs
       - remap_kubernetes_logs
       - remap_kubernetes_audit_logs
       - remap_vault_audit_logs
