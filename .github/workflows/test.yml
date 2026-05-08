@@ -22,4 +22,10 @@ jobs:
 
       - name: Test Vector Configuration
         run: |
-          vector test config/**/*.yml tests/**/*.yml
+          vector test \
+            --config-dir config/agent \
+            --config-dir tests/agent
+          
+          vector test \
+            --config-dir config/aggregator \
+            --config-dir tests/aggregator

@@ -1,15 +1,13 @@
-transforms:
-  parse_syslog:
-    type: remap
-    inputs:
-      - tag_unifi_logs
-    source: |
-      if is_string(.host) {
-        .host = {"name": .host}
-      }
+type: remap
+inputs:
+  - tag_unifi_logs
+source: |
+  if is_string(.host) {
+    .host = {"name": .host}
+  }
 
-      parsed, err = parse_syslog(.message)
-      if err == null {
-          del(.message)
-          . = merge(.,parsed)
-      }
+  parsed, err = parse_syslog(.message)
+  if err == null {
+      del(.message)
+      . = merge(.,parsed)
+  }

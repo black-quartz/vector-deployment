@@ -1,9 +1,7 @@
-transforms:
-  tag_hubble_flow_logs:
-    type: remap
-    inputs:
-      - hubble_flow_logs
-    source: |
-      .@source = "hubble_flow"
-      .@dataset = "hubble.flow"
-      .@namespace = "default"
+type: remap
+inputs:
+  - hubble_flow_logs
+source: |
+  .@source = "hubble_flow"
+  .@dataset = "hubble.flow"
+  .@namespace = "default"
