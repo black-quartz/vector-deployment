@@ -1,0 +1,9 @@
+transforms:
+  tag_unifi_logs:
+    type: remap
+    inputs:
+      - unifi_logs
+    source: |
+      .@source = "unifi"
+      .@dataset = "unifi"
+      .@namespace = "default"

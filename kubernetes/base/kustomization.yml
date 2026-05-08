@@ -9,13 +9,28 @@ resources:
 configMapGenerator:
   - name: vector-agent-config
     files:
-      - ../../config/agent/sources.yml
-      - ../../config/agent/transforms.yml
-      - ../../config/agent/sinks.yml
+      - ../../config/agent/vector.yml
+      - ../../config/agent/sources/hubble_flow_logs.yml
+      - ../../config/agent/sources/kubernetes_audit_logs.yml
+      - ../../config/agent/sources/kubernetes_logs.yml
+      - ../../config/agent/transforms/tag_hubble_flow_logs.yml
+      - ../../config/agent/transforms/tag_kubernetes_audit_logs.yml
+      - ../../config/agent/transforms/tag_kubernetes_logs.yml
+      - ../../config/agent/sinks/vector_aggregator.yml
   - name: vector-aggregator-config
     files:
-      - ../../config/aggregator/sources.yml
-      - ../../config/aggregator/transforms.yml
-      - ../../config/aggregator/sinks.yml
+      - ../../config/aggregator/vector.yml
+      - ../../config/aggregator/sources/unifi_logs.yml
+      - ../../config/aggregator/sources/vector_agent.yml
+      - ../../config/aggregator/transforms/parse_json.yml
+      - ../../config/aggregator/transforms/parse_syslog.yml
+      - ../../config/aggregator/transforms/route_logs.yml
+      - ../../config/aggregator/transforms/tag_unifi_logs.yml
+      - ../../config/aggregator/transforms/transform_envoy_access_logs.yml
+      - ../../config/aggregator/transforms/transform_hubble_flow_logs.yml
+      - ../../config/aggregator/transforms/transform_kubernetes_audit_logs.yml
+      - ../../config/aggregator/transforms/transform_kubernetes_logs.yml
+      - ../../config/aggregator/transforms/transform_vault_audit_logs.yml
+      - ../../config/aggregator/sinks/elasticsearch_logs.yml
 generatorOptions:
   disableNameSuffixHash: true

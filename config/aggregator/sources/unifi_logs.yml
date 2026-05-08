@@ -1,0 +1,5 @@
+sources:
+  unifi_logs:
+    type: syslog
+    address: 0.0.0.0:514
+    mode: udp
