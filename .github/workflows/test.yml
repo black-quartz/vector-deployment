@@ -17,15 +17,20 @@ jobs:
 
       - name: Validate Vector Configuration
         run: |
-          vector validate config/agent/**/*.yml --no-environment
-          vector validate config/aggregator/**/*.yml --no-environment
+          vector validate \
+            --config-dir config/agent/ \
+            --no-environment
+
+          vector validate \
+            --config-dir config/aggregator/ \
+            --no-environment
 
       - name: Test Vector Configuration
         run: |
           vector test \
             --config-dir config/agent \
             --config-dir tests/agent
-          
+
           vector test \
             --config-dir config/aggregator \
             --config-dir tests/aggregator
