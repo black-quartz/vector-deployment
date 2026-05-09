@@ -30,7 +30,7 @@ spec:
     role: "Agent"
     dataDir: /vector-data-dir
     existingConfigMaps:
-      - vector-agent-config
+      - vector-agent-base
 
     service:
       enabled: false
@@ -43,6 +43,18 @@ spec:
       create: false
 
     extraVolumes:
+      - name: vector-agent-sources
+        configMap:
+          name: vector-agent-sources
+
+      - name: vector-agent-transforms
+        configMap:
+          name: vector-agent-transforms
+
+      - name: vector-agent-sinks
+        configMap:
+          name: vector-agent-transforms
+
       - name: ilysium-root-ca
         configMap:
           name: ilysium-root-ca
@@ -57,6 +69,18 @@ spec:
           type: DirectoryOrCreate
 
     extraVolumeMounts:
+      - name: vector-agent-sources
+        mountPath: /etc/vector/sources
+        readOnly: true
+
+      - name: vector-agent-transforms
+        mountPath: /etc/vector/transforms
+        readOnly: true
+
+      - name: vector-agent-sinks
+        mountPath: /etc/vector/sinks
+        readOnly: true
+
       - name: ilysium-root-ca
         mountPath: /etc/ssl/ilysium
         readOnly: true
@@ -95,7 +119,7 @@ spec:
     role: "Stateless-Aggregator"
     dataDir: /vector-data-dir
     existingConfigMaps:
-      - vector-aggregator-config
+      - vector-aggregator-base
 
     # autoscaling:
     #   enabled: false
@@ -125,6 +149,18 @@ spec:
       create: false
 
     extraVolumes:
+      - name: vector-aggregator-sources
+        configMap:
+          name: vector-aggregator-sources
+
+      - name: vector-aggregator-transforms
+        configMap:
+          name: vector-aggregator-transforms
+
+      - name: vector-aggregator-sinks
+        configMap:
+          name: vector-aggregator-sinks
+
       - name: elastic-ca
         configMap:
           name: elastic-ca
@@ -138,6 +174,18 @@ spec:
           secretName: vector-aggregator-tls-secret
 
     extraVolumeMounts:
+      - name: vector-aggregator-sources
+        mountPath: /etc/vector/sources
+        readOnly: true
+
+      - name: vector-aggregator-transforms
+        mountPath: /etc/vector/transforms
+        readOnly: true
+
+      - name: vector-aggregator-sinks
+        mountPath: /etc/vector/sinks
+        readOnly: true
+
       - name: elastic-ca
         mountPath: /etc/ssl/elastic
         readOnly: true

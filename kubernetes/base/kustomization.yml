@@ -7,15 +7,29 @@ resources:
   - certificates.yml
   - vector.yml
 configMapGenerator:
-  - name: vector-agent-config
+  - name: vector-agent-base
     files:
-      - ../../config/agent/sources.yml
-      - ../../config/agent/transforms.yml
-      - ../../config/agent/sinks.yml
-  - name: vector-aggregator-config
+      - ../../config/agent/vector.yml
+  - name: vector-agent-sources
     files:
-      - ../../config/aggregator/sources.yml
-      - ../../config/aggregator/transforms.yml
-      - ../../config/aggregator/sinks.yml
+      - ../../config/agent/sources/*.yml
+  - name: vector-agent-transforms
+    files:
+      - ../../config/agent/transforms/*.yml
+  - name: vector-agent-sinks
+    files:
+      - ../../config/agent/sinks/*.yml
+  - name: vector-aggregator-base
+    files:
+      - ../../config/aggregator/vector.yml
+  - name: vector-aggregator-sources
+    files:
+      - ../../config/aggregator/sources/*.yml
+  - name: vector-aggregator-transforms
+    files:
+      - ../../config/aggregator/transforms/*.yml
+  - name: vector-aggregator-sinks
+    files:
+      - ../../config/aggregator/sinks/elasticsearch_logs.yml
 generatorOptions:
   disableNameSuffixHash: true

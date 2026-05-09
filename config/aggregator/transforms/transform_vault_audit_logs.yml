@@ -1,0 +1,5 @@
+type: remap
+inputs:
+  - route_logs.vault_audit_logs
+source: |
+  .@dataset = "vault.audit"

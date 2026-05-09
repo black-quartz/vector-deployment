@@ -1,0 +1,5 @@
+type: remap
+inputs:
+  - route_logs.envoy_access_logs
+source: |
+  .@dataset = "envoy.access"
